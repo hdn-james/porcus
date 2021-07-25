@@ -8,6 +8,7 @@ module.exports = {
 		path: path.resolve(__dirname, "build"),
 		filename: "bundle.js",
 	},
+	devtool: "eval-source-map",
 	module: {
 		rules: [
 			{
@@ -15,8 +16,8 @@ module.exports = {
 				use: "babel-loader",
 			},
 			{
-				test: /\.(sa|sc)ss$/,
-				use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+				test: /\.(s(a|c)ss)$/,
+				use: ["style-loader", "css-loader", "sass-loader"],
 			},
 		],
 	},
@@ -32,5 +33,6 @@ module.exports = {
 		contentBase: path.join(__dirname, "src/assets"),
 		compress: true,
 		port: 2402,
+		hot: true,
 	},
 };
